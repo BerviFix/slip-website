@@ -1,32 +1,15 @@
 <script setup lang="ts">
-import { gsap } from 'gsap'
-
 const { theme, toggle } = useThemeMode()
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 
-let mm: gsap.MatchMedia | null = null
-
 onMounted(() => {
   if (!import.meta.client) return
-  mm = gsap.matchMedia()
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from('.nav-item', {
-      y: -20,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: 'power2.out',
-    })
-  })
-
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
 })
 
 onBeforeUnmount(() => {
-  mm?.revert()
-  mm = null
   window.removeEventListener('scroll', handleScroll)
 })
 
@@ -68,7 +51,7 @@ const mobileMenuLabel = computed(() =>
 
       <!-- Logo Home -->
       <button @click="scrollToSection('hero')" class="flex items-center gap-2 pl-3 pr-4 py-2 hover:bg-base-content/5 rounded-full transition-colors group">
-        <img src="/favicon.png" alt="Slip" class="w-6 h-6 rounded-lg group-hover:rotate-12 transition-transform" />
+        <NuxtImg src="/favicon.png" alt="Slip" width="24" height="24" densities="x1 x2" format="webp" class="w-6 h-6 rounded-lg group-hover:rotate-12 transition-transform" />
         <span class="font-bold text-base-content text-sm tracking-tight">Slip</span>
       </button>
 
@@ -143,3 +126,22 @@ const mobileMenuLabel = computed(() =>
     </div>
   </nav>
 </template>
+
+<style scoped>
+@media (prefers-reduced-motion: no-preference) {
+  .nav-item {
+    animation: nav-drop 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+}
+
+@keyframes nav-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

@@ -77,13 +77,6 @@ onMounted(() => {
 
   mm.add('(prefers-reduced-motion: no-preference)', () => {
     gsapCtx = gsap.context(() => {
-      const tl = gsap.timeline()
-      tl.from('.hero-badge', { y: 20, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' })
-        .from('.hero-title', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
-        .from('.hero-desc', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-        .from('.hero-btns', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.6')
-        .from('.hero-mockup', { y: 60, opacity: 0, duration: 1, ease: 'power4.out' }, '-=0.8')
-
       gsap.utils.toArray<HTMLElement>('.reveal-section').forEach((section) => {
         gsap.from(section, {
           scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none reverse' },
@@ -201,8 +194,10 @@ const bentoItems = [
                 alt="Slip — dashboard busta paga con netto, ferie, ROL e TFR"
                 width="600"
                 height="1300"
+                sizes="(min-width: 640px) 300px, 260px"
+                densities="x1 x2"
                 format="webp"
-                quality="85"
+                quality="80"
                 loading="eager"
                 fetchpriority="high"
                 class="w-full h-full object-cover rounded-[2.5rem]"
@@ -260,8 +255,10 @@ const bentoItems = [
                 alt="Schermata dashboard Slip — netto totale, lordo totale, ferie residue, TFR accumulato"
                 width="500"
                 height="780"
+                sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 90vw"
+                densities="x1 x2"
                 format="webp"
-                quality="80"
+                quality="78"
                 loading="lazy"
                 class="w-full h-full object-cover"
               />
@@ -279,8 +276,10 @@ const bentoItems = [
                 alt="Schermata riepilogo AI — spiegazione automatica della busta paga in italiano"
                 width="500"
                 height="780"
+                sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 90vw"
+                densities="x1 x2"
                 format="webp"
-                quality="80"
+                quality="78"
                 loading="lazy"
                 class="w-full h-full object-cover"
               />
@@ -298,8 +297,10 @@ const bentoItems = [
                 alt="Schermata grafici Slip — andamento mensile lordo e netto, TFR accumulato"
                 width="500"
                 height="780"
+                sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 90vw"
+                densities="x1 x2"
                 format="webp"
-                quality="80"
+                quality="78"
                 loading="lazy"
                 class="w-full h-full object-cover"
               />
@@ -389,8 +390,10 @@ const bentoItems = [
                 alt="Schermata dettaglio busta paga Slip — voci variabili, retribuzione, scatti anzianità"
                 width="600"
                 height="1066"
+                sizes="(min-width: 1024px) 384px, 90vw"
+                densities="x1 x2"
                 format="webp"
-                quality="80"
+                quality="78"
                 loading="lazy"
                 class="w-full h-full object-cover"
               />
@@ -490,5 +493,31 @@ const bentoItems = [
 <style scoped>
 .slip-container {
   @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-badge,
+  .hero-title,
+  .hero-desc,
+  .hero-btns,
+  .hero-mockup {
+    animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .hero-badge { animation-duration: 0.6s; animation-delay: 0s; }
+  .hero-title { animation-delay: 0.1s; }
+  .hero-desc { animation-delay: 0.25s; }
+  .hero-btns { animation-delay: 0.4s; animation-duration: 0.6s; }
+  .hero-mockup { animation-delay: 0.15s; animation-duration: 1s; transform-origin: center; }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
