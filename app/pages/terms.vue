@@ -3,9 +3,25 @@ const appConfig = useAppConfig()
 const lastUpdated = appConfig.legalLastUpdated
 
 useSeoMeta({
-  title: 'Termini di Servizio - Slip',
-  description: 'Termini e condizioni di utilizzo di Slip, l\'app per la gestione delle buste paga.',
+  title: 'Termini di Servizio — Slip',
+  description: 'Termini e condizioni di utilizzo di Slip, l\'app italiana che spiega la busta paga con l\'AI.',
+  ogLocale: 'it_IT',
 })
+
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'WebPage',
+    name: 'Termini di Servizio — Slip',
+    description: 'Termini e condizioni d\'uso di Slip.',
+    inLanguage: 'it-IT',
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Termini di Servizio', item: '/terms' },
+    ],
+  }),
+])
 </script>
 
 <template>
@@ -105,7 +121,7 @@ useSeoMeta({
 
         <h2>Contatti</h2>
         <p>
-          Per domande sui termini di servizio: <a href="mailto:legal@slip.app">legal@slip.app</a>
+          Per domande sui termini di servizio: <a href="mailto:legal@slippino.app">legal@slippino.app</a>
         </p>
       </div>
     </main>

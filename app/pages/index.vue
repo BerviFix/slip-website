@@ -2,16 +2,17 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { faqs } from '~/content/faq'
+import { howToReadPayslip } from '~/content/howto'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const { appStoreUrl, playStoreUrl } = useStoreLinks()
 
 useSeoMeta({
-  title: 'Slip — Capisci la tua busta paga (senza diventare commercialista)',
-  ogTitle: 'Slip — Capisci la tua busta paga (senza diventare commercialista)',
-  description: 'L\'app italiana che legge la tua busta paga con l\'AI e te la spiega in italiano. Carichi il cedolino, capisci dove finiscono i tuoi soldi. Gratis su iOS e Android.',
-  ogDescription: 'L\'app italiana che legge la tua busta paga con l\'AI e te la spiega in italiano. Carichi il cedolino, capisci dove finiscono i tuoi soldi. Gratis su iOS e Android.',
+  title: 'Slip — App AI per leggere e capire la busta paga',
+  ogTitle: 'Slip — App AI per leggere e capire la busta paga',
+  description: 'L\'app italiana che legge la busta paga con l\'AI e te la spiega in italiano semplice: netto, lordo, IRPEF, INPS, TFR, ferie. Gratis su iOS e Android.',
+  ogDescription: 'L\'app italiana che legge la busta paga con l\'AI e te la spiega in italiano semplice: netto, lordo, IRPEF, INPS, TFR, ferie. Gratis su iOS e Android.',
   twitterCard: 'summary_large_image',
   ogLocale: 'it_IT',
 })
@@ -53,6 +54,17 @@ useSchemaOrg([
     acceptedAnswer: f.answer,
     inLanguage: 'it-IT',
   })),
+  defineHowTo({
+    name: howToReadPayslip.name,
+    description: howToReadPayslip.description,
+    totalTime: howToReadPayslip.totalTime,
+    inLanguage: 'it-IT',
+    step: howToReadPayslip.steps.map(s => ({
+      '@type': 'HowToStep',
+      name: s.name,
+      text: s.text,
+    })),
+  }),
 ])
 
 const heroRoot = ref<HTMLElement | null>(null)
@@ -413,6 +425,49 @@ const bentoItems = [
     </section>
 
     <FaqSection />
+
+    <!-- RISORSE / INTERNAL LINKS -->
+    <section id="risorse" class="py-20 sm:py-24 bg-base-200 reveal-section">
+      <div class="slip-container max-w-5xl">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+            Risorse busta paga
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-base-content tracking-tight mb-4">
+            Vuoi capirne di più?
+          </h2>
+          <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
+            Guide pratiche, glossario e tabelle aggiornate per padroneggiare il cedolino italiano.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <NuxtLink to="/come-leggere-busta-paga" class="group rounded-3xl bg-base-100 border border-base-300 p-7 hover:border-primary transition-colors">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+              <UiIcon name="sparkles" class="w-6 h-6 text-primary" />
+            </div>
+            <h3 class="text-xl font-bold text-base-content mb-2">Come si legge la busta paga</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed mb-3">Guida in 4 passi: testa, corpo, piede, totali. Cosa cercare in ogni parte del cedolino.</p>
+            <span class="text-sm font-bold text-primary group-hover:underline">Leggi la guida →</span>
+          </NuxtLink>
+          <NuxtLink to="/glossario" class="group rounded-3xl bg-base-100 border border-base-300 p-7 hover:border-primary transition-colors">
+            <div class="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mb-5">
+              <UiIcon name="chart" class="w-6 h-6 text-accent" />
+            </div>
+            <h3 class="text-xl font-bold text-base-content mb-2">Glossario busta paga</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed mb-3">IRPEF, INPS, TFR, RAL, CCNL, ROL, conguaglio: tutti i termini spiegati in italiano semplice.</p>
+            <span class="text-sm font-bold text-primary group-hover:underline">Apri il glossario →</span>
+          </NuxtLink>
+          <NuxtLink to="/scaglioni-irpef-2026" class="group rounded-3xl bg-base-100 border border-base-300 p-7 hover:border-primary transition-colors">
+            <div class="w-12 h-12 rounded-2xl bg-success/10 flex items-center justify-center mb-5">
+              <UiIcon name="bolt" class="w-6 h-6 text-success" />
+            </div>
+            <h3 class="text-xl font-bold text-base-content mb-2">Scaglioni IRPEF 2026</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed mb-3">Aliquote IRPEF aggiornate e simulazioni lordo→netto per RAL da 20k a 60k euro.</p>
+            <span class="text-sm font-bold text-primary group-hover:underline">Vedi le tabelle →</span>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
 
     <!-- FINAL CTA -->
     <section class="py-20 sm:py-28 bg-gradient-to-br from-primary via-primary to-accent text-primary-content relative overflow-hidden">

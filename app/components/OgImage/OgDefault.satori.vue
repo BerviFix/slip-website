@@ -104,7 +104,7 @@ withDefaults(defineProps<{
         >
           S
         </div>
-        <span style="font-weight: 700; color: #1a1d23; font-size: 30px;">slip.app</span>
+        <span style="font-weight: 700; color: #1a1d23; font-size: 30px;">slippino.app</span>
       </div>
       <span>Gratis · iOS e Android</span>
     </div>

@@ -41,7 +41,7 @@ Two DaisyUI themes defined in `tailwind.config.ts`: `slip` (light) and `slipdark
 When changing theme logic, all three locations must stay in sync (inline script, plugin, composable) or the page will flash on load.
 
 ### Prerendering & SEO
-`nuxt.config.ts` sets `routeRules['/'] = { prerender: true }` and `nitro.prerender.crawlLinks = true`, so build crawls from `/` and statically renders all linked routes. The default layout injects per-route canonical URL using `runtimeConfig.public.siteUrl` (env: `NUXT_PUBLIC_SITE_URL`, default `https://slip.app`). Open Graph, Twitter, JSON-LD (`WebSite`, `Organization`, `MobileApplication`) are configured globally in `nuxt.config.ts`.
+`nuxt.config.ts` sets `routeRules['/'] = { prerender: true }` and `nitro.prerender.crawlLinks = true`, so build crawls from `/` and statically renders all linked routes. The default layout injects per-route canonical URL using `runtimeConfig.public.siteUrl` (env: `NUXT_PUBLIC_SITE_URL`, default `https://slippino.app`). Open Graph, Twitter, JSON-LD (`WebSite`, `Organization`, `MobileApplication`) are configured globally in `nuxt.config.ts`.
 
 ### Store links
 App Store / Play Store URLs and app IDs are hardcoded in `useStoreLinks()` and in `nuxt.config.ts` `apple-itunes-app` / `google-play-app` meta tags. Update both when IDs change.

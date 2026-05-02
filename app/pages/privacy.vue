@@ -3,9 +3,25 @@ const appConfig = useAppConfig()
 const lastUpdated = appConfig.legalLastUpdated
 
 useSeoMeta({
-  title: 'Privacy Policy - Slip',
-  description: 'Informativa sulla privacy di Slip, l\'app per la gestione delle buste paga.',
+  title: 'Privacy Policy — Slip',
+  description: 'Informativa privacy di Slip: dati cifrati end-to-end, anonimizzazione AI, conformità GDPR. Mai venduti, mai condivisi.',
+  ogLocale: 'it_IT',
 })
+
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'WebPage',
+    name: 'Privacy Policy — Slip',
+    description: 'Informativa privacy di Slip: dati cifrati end-to-end, anonimizzazione AI, conformità GDPR.',
+    inLanguage: 'it-IT',
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Privacy Policy', item: '/privacy' },
+    ],
+  }),
+])
 </script>
 
 <template>
@@ -83,7 +99,7 @@ useSeoMeta({
 
         <h2>Contatti</h2>
         <p>
-          Per qualsiasi domanda sulla privacy, contattaci all'indirizzo: <a href="mailto:privacy@slip.app">privacy@slip.app</a>
+          Per qualsiasi domanda sulla privacy, contattaci all'indirizzo: <a href="mailto:privacy@slippino.app">privacy@slippino.app</a>
         </p>
 
         <h2>Modifiche alla policy</h2>

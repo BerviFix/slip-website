@@ -17,10 +17,19 @@ const currentYear = new Date().getFullYear()
         </p>
       </div>
 
+      <nav aria-label="Risorse busta paga" class="mb-10">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-base-content/50 mb-4">Risorse busta paga</h3>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-base-content/70">
+          <NuxtLink to="/come-leggere-busta-paga" class="hover:text-primary transition-colors">Come si legge la busta paga</NuxtLink>
+          <NuxtLink to="/glossario" class="hover:text-primary transition-colors">Glossario</NuxtLink>
+          <NuxtLink to="/scaglioni-irpef-2026" class="hover:text-primary transition-colors">Scaglioni IRPEF 2026</NuxtLink>
+        </div>
+      </nav>
+
       <div class="flex flex-wrap justify-center gap-6 md:gap-12 mb-16 text-sm font-medium text-base-content/70">
         <NuxtLink to="/privacy" class="hover:text-primary transition-colors">Privacy Policy</NuxtLink>
         <NuxtLink to="/terms" class="hover:text-primary transition-colors">Termini e Condizioni</NuxtLink>
-        <a href="mailto:support@slip.app" class="hover:text-primary transition-colors">Supporto</a>
+        <a href="mailto:support@slippino.app" class="hover:text-primary transition-colors">Supporto</a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4 text-base-content/50 text-sm">
