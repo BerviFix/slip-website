@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+.pnp.*
+
+# Nuxt build output
+.nuxt
+.output
+.data
+dist
+
+# Vercel
+.vercel
+
+# GSD planning artifacts (locali)
+.planning/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode
+.idea
+*.swp
+
+# Logs
+*.log
+npm-debug.log*

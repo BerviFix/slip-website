@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  :root.dark,
+  :root[data-theme='slipdark'] {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: geometricPrecision;
+  }
+
+  ::selection {
+    background: hsl(var(--p) / 0.22);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--p));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  section[id] {
+    scroll-margin-top: 90px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--bc) / 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--bc) / 0.3);
+}
+
+/* Smooth animations */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+@layer components {
+  .slip-container {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .slip-surface {
+    @apply bg-base-100 bg-opacity-70 backdrop-blur-xl border border-base-200 border-opacity-70 shadow-soft;
+  }
+
+  .slip-chip {
+    @apply inline-flex items-center rounded-full border border-base-200 bg-base-100 bg-opacity-70 px-3 py-1 text-sm text-base-content text-opacity-80 transition;
+  }
+
+  .slip-chip:hover {
+    @apply border-base-300 bg-base-100;
+  }
+
+  .slip-chip[aria-pressed='true'] {
+    border-color: hsl(var(--p) / 0.55);
+    background: hsl(var(--p) / 0.12);
+    color: hsl(var(--bc));
+  }
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--p)) 0%, hsl(var(--s)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Subtle gradient mesh background */
+.bg-surface-mesh {
+  background-image:
+    radial-gradient(60% 50% at 10% 10%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0) 60%),
+    radial-gradient(55% 50% at 90% 20%, rgba(6, 182, 212, 0.16) 0%, rgba(6, 182, 212, 0) 60%),
+    radial-gradient(55% 55% at 50% 90%, rgba(124, 58, 237, 0.14) 0%, rgba(124, 58, 237, 0) 60%);
+}
+
+/* Prose customization — drives text color from DaisyUI tokens so both themes
+   render legibly. Body uses 80% base-content for comfortable reading. */
+.prose {
+  --tw-prose-headings: hsl(var(--bc));
+  --tw-prose-body: hsl(var(--bc) / 0.8);
+  --tw-prose-links: hsl(var(--p));
+  --tw-prose-bold: hsl(var(--bc));
+  --tw-prose-bullets: hsl(var(--bc) / 0.4);
+  --tw-prose-counters: hsl(var(--bc) / 0.6);
+  --tw-prose-quotes: hsl(var(--bc));
+  --tw-prose-quote-borders: hsl(var(--bc) / 0.2);
+  --tw-prose-captions: hsl(var(--bc) / 0.6);
+  --tw-prose-code: hsl(var(--bc));
+  --tw-prose-hr: hsl(var(--bc) / 0.15);
+  --tw-prose-th-borders: hsl(var(--bc) / 0.2);
+  --tw-prose-td-borders: hsl(var(--bc) / 0.1);
+}
+
+.prose h1 {
+  @apply text-3xl md:text-4xl font-bold mb-6;
+}
+
+.prose h2 {
+  @apply text-2xl font-bold mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mt-6 mb-3;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul {
+  @apply mb-4 pl-6 list-disc;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-primary hover:underline;
+}
+
+.prose .lead {
+  @apply text-lg mb-8;
+  color: hsl(var(--bc) / 0.6);
+}
